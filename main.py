@@ -90,7 +90,6 @@ class ImageToAscii:
         :return: ascii_art : the ascii_art variable
         """
         pixels = self.image.getdata()
-        # ascii_art = "".join([self.scale_five[pixel//25] for pixel in pixels])
         ascii_art = ""
         for pixel in pixels:
             # Since grayscale pixels are measured in color by the scale 0-255,
@@ -110,9 +109,13 @@ class ImageToAscii:
         """
         image_data = self.ascii_image(self)
         pixel_count = len(image_data)
+        # This line adds a newline character after every 100th character in the
+        # ASCII string to format it for viewing. It uses array notation since
+        # strings are array of characters and join to append the newline char.
         ascii_image = "\n".join(image_data[i:(i + 100)] for i in
                                 range(0, pixel_count, 100))
         txt_name = input("What do you want to save the ASCII art as?\n")
+        # This creates or overrides a .txt file with the name the user input.
         with open(txt_name, "w") as f:
             f.write(ascii_image)
         print(ascii_image)
