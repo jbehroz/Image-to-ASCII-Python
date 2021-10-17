@@ -112,7 +112,8 @@ class ImageToAscii:
         pixel_count = len(image_data)
         ascii_image = "\n".join(image_data[i:(i + 100)] for i in
                                 range(0, pixel_count, 100))
-        with open("ascii_image.txt", "w") as f:
+        txt_name = input("What do you want to save the ASCII art as?\n")
+        with open(txt_name, "w") as f:
             f.write(ascii_image)
         print(ascii_image)
 
